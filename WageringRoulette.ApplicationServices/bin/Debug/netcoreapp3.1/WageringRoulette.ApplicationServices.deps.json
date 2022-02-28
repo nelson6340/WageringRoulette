@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "WageringRoulette.ApplicationServices/1.0.0": {
+        "dependencies": {
+          "WageringRoulette.DomainServices": "1.0.0"
+        },
+        "runtime": {
+          "WageringRoulette.ApplicationServices.dll": {}
+        }
+      },
+      "WageringRoulette.DomainServices/1.0.0": {
+        "runtime": {
+          "WageringRoulette.DomainServices.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WageringRoulette.ApplicationServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WageringRoulette.DomainServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

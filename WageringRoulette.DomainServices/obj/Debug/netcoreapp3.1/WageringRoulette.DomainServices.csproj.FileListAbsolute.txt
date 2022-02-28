@@ -1,0 +1,10 @@
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.AssemblyInfoInputs.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.AssemblyInfo.cs
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.csproj.CoreCompileInputs.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.deps.json
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.DomainServices\obj\Debug\netcoreapp3.1\WageringRoulette.DomainServices.csproj.AssemblyReference.cache

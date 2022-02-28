@@ -1,0 +1,15 @@
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\bin\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.deps.json
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\bin\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\bin\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.csproj.AssemblyReference.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.AssemblyInfoInputs.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.AssemblyInfo.cs
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.csproj.CoreCompileInputs.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.ErrorHandling.MessageResource.resources
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.csproj.GenerateResource.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.ApplicationServices\obj\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.csproj.CopyComplete
