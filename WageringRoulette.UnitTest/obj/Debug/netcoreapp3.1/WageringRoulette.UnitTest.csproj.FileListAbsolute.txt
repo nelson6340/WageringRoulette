@@ -96,3 +96,10 @@ C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\obj\Deb
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\obj\Debug\netcoreapp3.1\WageringRoulette.UnitTest.dll
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\obj\Debug\netcoreapp3.1\WageringRoulette.UnitTest.pdb
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\obj\Debug\netcoreapp3.1\WageringRoulette.UnitTest.genruntimeconfig.cache
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\WageringRoulette.ApplicationServices.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette.UnitTest\bin\Debug\netcoreapp3.1\WageringRoulette.DomainServices.pdb
