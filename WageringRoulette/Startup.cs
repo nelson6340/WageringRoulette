@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WageringRoulette.ApplicationServices;
 using WageringRoulette.ApplicationServices.Abstraction;
+using WageringRoulette.ApplicationServices.Configuration;
 using WageringRoulette.DomainServices;
 using WageringRoulette.DomainServices.Abstraction;
 using WageringRoulette.Repositories;
@@ -42,6 +43,8 @@ namespace WageringRoulette
                     redisConfig.DBConfig.AllowAdmin = true;
                 }, "wageringRoulette");
             });
+
+            services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 
             services.AddScoped<IWageringRouletteRepository, WageringRouletteRepository>();
             services.AddScoped<IWageringRouletteDomainServie, WageringRouletteDomainServie>();

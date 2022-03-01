@@ -58,7 +58,6 @@ namespace WageringRoulette.API.Controllers
         /// <summary>
         /// Realiza la apuesta en la ruleta
         /// </summary>
-        /// <param name="userId">Identificador de usuario</param>
         /// <param name="rouletteId">Identificador de la ruleta</param>
         /// <param name="wagerRequest">Número o color elegido, 38-Negro 39-Rojo y números de 0 a 36</param>
         /// <returns>Resumen de apuestas</returns>

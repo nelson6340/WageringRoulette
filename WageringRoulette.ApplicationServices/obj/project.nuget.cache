@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "S4qiF0klIm6kcUZLS4sAldpuzlcVS1P2kWPohMj78S+iE7mhdIoSsEytWzCXWBcBMV+Io2HinDhfDu8SZpFryA==",
+  "dgSpecHash": "K+m6+FPB3X32nO2wtJuV9ZR/NN55VSu6kO73NbboYX1P4gcmxyBgvVWXJS9PgKwY5U38gj6yp1P1lRv9yeANyA==",
   "success": true,
   "projectFilePath": "C:\\Users\\napraez\\source\\repos\\WageringRoulette\\WageringRoulette.ApplicationServices\\WageringRoulette.ApplicationServices.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\napraez\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\napraez\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\napraez\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\napraez\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

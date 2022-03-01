@@ -1,8 +1,10 @@
+using Microsoft.Extensions.Options;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using WageringRoulette.ApplicationServices;
+using WageringRoulette.ApplicationServices.Configuration;
 using WageringRoulette.ApplicationServices.Exceptions;
 using WageringRoulette.ApplicationServices.Requests;
 using WageringRoulette.DomainServices.Abstraction;
@@ -15,12 +17,21 @@ namespace WageringRoulette.UnitTest
     public class WageringRouletteApplicationServiceTest
     {
         private readonly Mock<IWageringRouletteDomainServie> mockDomainServices = new Mock<IWageringRouletteDomainServie>();
+        readonly IOptions<AppConfiguration> appConfiguration = Options.Create(new AppConfiguration()
+        {
+            Black = 38,
+            Red = 39,
+            MinMoney = 0.1m,
+            MaxMoney = 10000,
+            MultiplierByNumber = 5,
+            MultiplierByColor = 1.8m
+        });
 
         [Fact]
         public void Create_Should_IdCreated()
         {
             mockDomainServices.Setup(x => x.Save(It.IsAny<RouletteModel>()));
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             var result = instance.Create();
 
             Assert.NotNull(result.Id);
@@ -42,7 +53,7 @@ namespace WageringRoulette.UnitTest
             mockDomainServices.Setup(x => x.Update(rouletteModel)).Returns(rouletteModel);
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
 
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             var result = instance.OpenWager(id);
 
             Assert.True(result.IsOpen);
@@ -52,7 +63,6 @@ namespace WageringRoulette.UnitTest
         public void OpenWager_Should_ErrorNotAllowedOpen()
         {
             string id = Guid.NewGuid().ToString();
-
             RouletteModel rouletteModel = new RouletteModel()
             {
                 Id = id,
@@ -61,12 +71,9 @@ namespace WageringRoulette.UnitTest
                 OpeningDate = "2022-02-28T10:01:54.9571247Z",
                 Pocket = new IDictionary<string, decimal>[40]
             };
-
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
-
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.OpenWager(id));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotAllowedOpen), ex.Message);
@@ -77,7 +84,7 @@ namespace WageringRoulette.UnitTest
         {
             string id = Guid.NewGuid().ToString();
             mockDomainServices.Setup(x => x.GetById(id));
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.OpenWager(id));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotFound), ex.Message);
@@ -96,7 +103,7 @@ namespace WageringRoulette.UnitTest
                 Pocket = new IDictionary<string, decimal>[40]
             };
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             var result = instance.Find(id);
 
             Assert.NotNull(result);
@@ -107,7 +114,7 @@ namespace WageringRoulette.UnitTest
         {
             string id = Guid.NewGuid().ToString();
             mockDomainServices.Setup(x => x.GetById(id));
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.CloseWager(id));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotFound), ex.Message);
@@ -129,7 +136,7 @@ namespace WageringRoulette.UnitTest
 
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.CloseWager(id));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotAllowedCloseByOpen), ex.Message);
@@ -151,7 +158,7 @@ namespace WageringRoulette.UnitTest
 
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, null);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.CloseWager(id));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotAllowedClose), ex.Message);
@@ -176,9 +183,11 @@ namespace WageringRoulette.UnitTest
                 Pocket = new IDictionary<string, decimal>[40]
             };
 
+
+
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, appConfiguration);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.Wager(id, wagerRequest));
 
             Assert.Equal(GetErrorDescription(MessageCodes.MoneyOutRange), ex.Message);
@@ -196,7 +205,7 @@ namespace WageringRoulette.UnitTest
                 UserId = "Usuario"
             };
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, appConfiguration);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.Wager(id, wagerRequest));
 
             Assert.Equal(GetErrorDescription(MessageCodes.NotFound), ex.Message);
@@ -225,7 +234,7 @@ namespace WageringRoulette.UnitTest
 
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>()));
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, appConfiguration);
             BusinessException ex = Assert.Throws<BusinessException>(() => instance.Wager(id, wagerRequest));
 
             Assert.Equal(GetErrorDescription(MessageCodes.RouletteClosed), ex.Message);
@@ -257,7 +266,7 @@ namespace WageringRoulette.UnitTest
 
             mockDomainServices.Setup(x => x.Update(It.IsAny<RouletteModel>())).Returns(rouletteModel);
             mockDomainServices.Setup(x => x.GetById(id)).Returns(rouletteModel);
-            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object);
+            var instance = new WageringRouletteApplicationServie(mockDomainServices.Object, appConfiguration);
             var result = instance.Wager(id, wagerRequest);
 
             Assert.True(result.Pocket[1].Any());

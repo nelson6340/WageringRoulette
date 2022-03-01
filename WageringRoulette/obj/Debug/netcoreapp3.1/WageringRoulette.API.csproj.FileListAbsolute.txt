@@ -56,3 +56,7 @@ C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcor
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\WageringRoulette.Repositories.dll
 C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\WageringRoulette.Repositories.pdb
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\napraez\source\repos\WageringRoulette\WageringRoulette\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

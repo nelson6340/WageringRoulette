@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using WageringRoulette.ApplicationServices.Abstraction;
+using WageringRoulette.ApplicationServices.Configuration;
 using WageringRoulette.ApplicationServices.Exceptions;
 using WageringRoulette.ApplicationServices.Requests;
 using WageringRoulette.DomainServices.Abstraction;
@@ -12,16 +14,12 @@ namespace WageringRoulette.ApplicationServices
     public class WageringRouletteApplicationServie : IWageringRouletteApplicationServie
     {
         private readonly IWageringRouletteDomainServie wageringRouletteDomainServie;
-        private const decimal MAX_MONEY = 10000;
-        private const decimal MIN_MONEY = 0.1M;
-        private const int RED = 39;
-        private const int BLACK = 38;
-        private const int MULTIPLIER_BY_NUMBER = 5;
-        private const decimal MULTIPLIER_BY_COLOR = 1.8M;
+        private readonly IOptions<AppConfiguration> config;
 
-        public WageringRouletteApplicationServie(IWageringRouletteDomainServie wageringRouletteDomainServie)
+        public WageringRouletteApplicationServie(IWageringRouletteDomainServie wageringRouletteDomainServie, IOptions<AppConfiguration> config)
         {
             this.wageringRouletteDomainServie = wageringRouletteDomainServie;
+            this.config = config;
         }
 
         public RouletteModel Create()
@@ -82,7 +80,7 @@ namespace WageringRoulette.ApplicationServices
             return wageringRouletteDomainServie.Update(roulette);
         }
 
-        private static void GameValidator(RouletteModel roulette)
+        private void GameValidator(RouletteModel roulette)
         {
             Random random = new Random();
             int numberWon = random.Next(0, 36);
@@ -139,63 +137,63 @@ namespace WageringRoulette.ApplicationServices
             }
         }
 
-        private static void SetWinnersByNumber(RouletteModel roulette, int numberWon)
+        private void SetWinnersByNumber(RouletteModel roulette, int numberWon)
         {
             List<string> winners = new List<string>(roulette.Pocket[numberWon].Keys);
             foreach (var winner in winners)
             {
                 roulette.Pocket[numberWon].TryGetValue(winner, out decimal value);
                 roulette.Pocket[numberWon].Remove(winner);
-                roulette.Pocket[numberWon].TryAdd(winner, (value * MULTIPLIER_BY_NUMBER));
+                roulette.Pocket[numberWon].TryAdd(winner, (value * config.Value.MultiplierByNumber));
             }
         }
 
-        private static void SetRedLosers(RouletteModel roulette)
+        private void SetRedLosers(RouletteModel roulette)
         {
-            if (roulette.Pocket[RED].Count > 0)
+            if (roulette.Pocket[config.Value.Red].Count > 0)
             {
-                SetZeroValue(roulette, RED);
+                SetZeroValue(roulette, config.Value.Red);
             }
         }
 
-        private static void SetBlackWinners(RouletteModel roulette)
+        private void SetBlackWinners(RouletteModel roulette)
         {
-            if (roulette.Pocket[BLACK].Count > 0)
+            if (roulette.Pocket[config.Value.Black].Count > 0)
             {
-                SetWonValueByColor(roulette, BLACK);
+                SetWonValueByColor(roulette, config.Value.Black);
             }
         }
 
-        private static void SetWonValueByColor(RouletteModel roulette, int colour)
+        private void SetWonValueByColor(RouletteModel roulette, int colour)
         {
             List<string> winners = new List<string>(roulette.Pocket[colour].Keys);
             foreach (var winner in winners)
             {
                 roulette.Pocket[colour].TryGetValue(winner, out decimal value);
                 roulette.Pocket[colour].Remove(winner);
-                roulette.Pocket[colour].TryAdd(winner, (value * MULTIPLIER_BY_COLOR));
+                roulette.Pocket[colour].TryAdd(winner, (value * config.Value.MultiplierByColor));
             }
         }
 
-        private static void SetBlackLoser(RouletteModel roulette)
+        private void SetBlackLoser(RouletteModel roulette)
         {
-            if (roulette.Pocket[BLACK].Count > 0)
+            if (roulette.Pocket[config.Value.Black].Count > 0)
             {
-                SetZeroValue(roulette, BLACK);
+                SetZeroValue(roulette, config.Value.Black);
             }
         }
 
-        private static void SetRedWinners(RouletteModel roulette)
+        private void SetRedWinners(RouletteModel roulette)
         {
-            if (roulette.Pocket[RED].Count > 0)
+            if (roulette.Pocket[config.Value.Red].Count > 0)
             {
-                SetWonValueByColor(roulette, RED);
+                SetWonValueByColor(roulette, config.Value.Red);
             }
         }
 
         public RouletteModel Wager(string rouletteId, WagerRequest wagerRequest)
         {
-            if (wagerRequest.Money > MAX_MONEY || wagerRequest.Money < MIN_MONEY)
+            if (wagerRequest.Money > config.Value.MaxMoney || wagerRequest.Money < config.Value.MinMoney)
             {
                 throw new BusinessException(MessageCodes.MoneyOutRange, GetErrorDescription(MessageCodes.MoneyOutRange));
             }
